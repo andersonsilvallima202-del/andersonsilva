@@ -1,489 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Anderson Silva - fotos, histórias e pontos turísticos da minha cidade.">
-  <title>Anderson Silva | Minha Cidade</title>
-
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #050505;
-      color: #fff;
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(5,5,5,.95);
-      border-bottom: 1px solid #292929;
-      backdrop-filter: blur(10px);
-    }
-
-    nav {
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: .3px;
-    }
-
-    .menu {
-      display: flex;
-      gap: 26px;
-      list-style: none;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .menu a {
-      color: #ddd;
-      transition: .2s;
-    }
-
-    .menu a:hover { color: #fff; }
-
-    .hero {
-      min-height: 620px;
-      display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      align-items: center;
-      gap: 50px;
-      padding: 70px 0;
-    }
-
-    .eyebrow {
-      color: #bbb;
-      font-size: 1.05rem;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 7vw, 5.4rem);
-      line-height: 1;
-      margin-bottom: 24px;
-    }
-
-    .hero p {
-      color: #cfcfcf;
-      font-size: 1.15rem;
-      max-width: 560px;
-      margin-bottom: 30px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 13px 20px;
-      border: 1px solid #777;
-      border-radius: 9px;
-      font-weight: 700;
-      transition: .2s;
-    }
-
-    .button.primary {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      border-color: #fff;
-    }
-
-    .hero-photo {
-      min-height: 440px;
-      border-radius: 18px;
-      border: 1px solid #303030;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.01)),
-        #151515;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
-      min-height: 440px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .photo-placeholder {
-      padding: 40px;
-      text-align: center;
-      color: #aaa;
-    }
-
-    section { padding: 85px 0; }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 15px;
-    }
-
-    .section-intro {
-      color: #bbb;
-      max-width: 720px;
-      margin-bottom: 35px;
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 50px;
-      align-items: start;
-    }
-
-    .facts {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .fact {
-      border: 1px solid #292929;
-      border-radius: 12px;
-      padding: 22px;
-      background: #0d0d0d;
-    }
-
-    .fact strong {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
-
-    .fact span { color: #999; }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .card {
-      border: 1px solid #292929;
-      border-radius: 13px;
-      overflow: hidden;
-      background: #0d0d0d;
-      transition: .2s;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: #555;
-    }
-
-    .card-photo {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background: #171717;
-      display: grid;
-      place-items: center;
-      color: #777;
-    }
-
-    .card-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .card-content { padding: 18px; }
-
-    .card h3 { margin-bottom: 6px; }
-
-    .card p {
-      color: #aaa;
-      font-size: .95rem;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .gallery-item {
-      aspect-ratio: 1 / 1;
-      border-radius: 13px;
-      overflow: hidden;
-      border: 1px solid #292929;
-      background: #111;
-      display: grid;
-      place-items: center;
-      color: #777;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .contact {
-      text-align: center;
-      border-top: 1px solid #222;
-    }
-
-    .contact p {
-      color: #aaa;
-      margin: 12px auto 25px;
-      max-width: 650px;
-    }
-
-    footer {
-      border-top: 1px solid #222;
-      padding: 25px 0;
-      color: #888;
-      font-size: .9rem;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 850px) {
-      .hero, .about { grid-template-columns: 1fr; }
-      .cards { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 560px) {
-      .menu { gap: 12px; font-size: .9rem; }
-      nav { align-items: flex-start; padding: 18px 0; flex-direction: column; }
-      .hero { padding: 45px 0; min-height: auto; }
-      .hero-photo { min-height: 300px; }
-      .hero-photo img { min-height: 300px; }
-      .facts, .cards, .gallery { grid-template-columns: 1fr; }
-      section { padding: 60px 0; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Major Isidoro, Alagoas — história, cultura, lugares e fotos da cidade.">
+<title>Major Isidoro | Alagoas</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#050505;color:#fff;line-height:1.7}
+header{position:sticky;top:0;z-index:10;background:rgba(5,5,5,.96);border-bottom:1px solid #222;padding:18px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.35rem;font-weight:bold;letter-spacing:1px}
+nav a{color:#fff;text-decoration:none;margin-left:22px;font-size:.95rem}
+nav a:hover{opacity:.6}
+section{padding:90px 7%;max-width:1250px;margin:auto}
+.hero{min-height:88vh;display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.eyebrow{color:#aaa;text-transform:uppercase;letter-spacing:3px;font-size:.8rem;margin-bottom:12px}
+h1{font-size:clamp(3rem,8vw,6.5rem);line-height:.95;margin-bottom:25px}
+h2{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:18px}
+p{color:#d0d0d0;max-width:720px}
+.hero-text p{font-size:1.1rem;margin-bottom:28px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.button{display:inline-block;padding:13px 20px;border:1px solid #fff;border-radius:8px;color:#000;background:#fff;text-decoration:none;font-weight:bold}
+.button.dark{background:transparent;color:#fff}
+.photo-box{min-height:480px;border:1px solid #333;border-radius:18px;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center}
+.photo-box img{width:100%;height:100%;min-height:480px;object-fit:cover;display:block}
+.photo-placeholder{padding:35px;text-align:center;color:#888}
+.photo-placeholder strong{display:block;color:#fff;margin-bottom:8px}
+.history,.gallery{border-top:1px solid #222}
+.history-content{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+.facts{border-left:2px solid #fff;padding-left:25px}
+.fact{margin-bottom:25px}.fact strong{display:block;font-size:1.5rem}
+.gallery-grid{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gallery-item{aspect-ratio:4/3;background:#111;border:1px solid #292929;border-radius:12px;overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery-item span{display:flex;height:100%;align-items:center;justify-content:center;color:#777;padding:15px;text-align:center}
+.contact{border-top:1px solid #222;text-align:center}
+.contact p{margin:0 auto 25px}
+footer{border-top:1px solid #222;padding:30px 7%;text-align:center;color:#777;font-size:.9rem}
+@media(max-width:800px){
+header{flex-direction:column;gap:12px}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+nav a{margin-left:0}
+.hero,.history-content{grid-template-columns:1fr}
+.hero{min-height:auto;padding-top:60px}
+.photo-box,.photo-box img{min-height:320px}
+.gallery-grid{grid-template-columns:1fr}
+section{padding:65px 6%}
+}
+</style>
 </head>
-
 <body>
-  <header>
-    <nav class="container">
-      <a class="logo" href="#inicio">AndersonSilva</a>
-      <ul class="menu">
-        <li><a href="#inicio">Início</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#pontos">Pontos Turísticos</a></li>
-        <li><a href="#galeria">Galeria</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+<div class="logo">AndersonSilva</div>
+<nav>
+<a href="#inicio">Início</a><a href="#historia">História</a><a href="#lugares">Lugares</a><a href="#galeria">Galeria</a><a href="#contato">Contato</a>
+</nav>
+</header>
 
-  <main>
-    <section id="inicio">
-      <div class="container hero">
-        <div>
-          <div class="eyebrow">Bem-vindo ao meu site</div>
-          <h1>Anderson Silva</h1>
-          <p>
-            Um espaço dedicado à minha cidade, suas histórias,
-            belezas, pessoas e lugares especiais.
-          </p>
+<main>
+<section class="hero" id="inicio">
+<div class="hero-text">
+<div class="eyebrow">Alagoas • Sertão</div>
+<h1>Major<br>Isidoro</h1>
+<p>Um espaço para conhecer a história, a cultura, as paisagens e as histórias de quem faz parte de Major Isidoro, Alagoas.</p>
+<div class="buttons">
+<a class="button" href="#historia">Conheça a história</a>
+<a class="button dark" href="#galeria">Ver fotos</a>
+</div>
+</div>
+<div class="photo-box">
+<img src="imagens/foto-principal.jpg" alt="Foto de Major Isidoro" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+<div class="photo-placeholder" style="display:none"><strong>Sua foto principal</strong>Coloque uma foto na pasta <b>imagens</b> com o nome <b>foto-principal.jpg</b>.</div>
+</div>
+</section>
 
-          <div class="buttons">
-            <a class="button primary" href="#pontos">Conheça minha cidade</a>
-            <a class="button" href="#galeria">Ver fotos</a>
-          </div>
-        </div>
+<section class="history" id="historia">
+<div class="history-content">
+<div>
+<div class="eyebrow">Nossa história</div>
+<h2>De Sertãozinho a Major Isidoro</h2>
+<p>A história de Major Isidoro tem suas raízes no século XIX. Segundo o IBGE, em 1857 o fazendeiro Antônio Jerônimo da Rocha estabeleceu-se às margens do Riacho do Sertão e fundou a fazenda Sertãozinho.</p><br>
+<p>Entre seus filhos estava Izidoro, conhecido como Major Izidoro. Ele continuou ligado à terra e ficou conhecido por sua atuação em favor da região. Sua popularidade fez com que fosse chamado de patriarca do Sertãozinho.</p><br>
+<p>Em 1943, o distrito de Sertãozinho passou a se chamar Major Isidoro. Em 17 de setembro de 1949, pela Lei nº 1.473, foi criado oficialmente o município de Major Isidoro.</p>
+</div>
+<div class="facts">
+<div class="fact"><strong>1857</strong><span>Início da história registrada da localidade de Sertãozinho.</span></div>
+<div class="fact"><strong>1943</strong><span>Sertãozinho passa a denominar-se Major Isidoro.</span></div>
+<div class="fact"><strong>17/09/1949</strong><span>Criação oficial do município.</span></div>
+<div class="fact"><strong>Izidorense</strong><span>Gentílico de quem nasce em Major Isidoro.</span></div>
+</div>
+</div>
+</section>
 
-        <div class="hero-photo">
-          <!-- COLOQUE SUA FOTO PRINCIPAL EM: images/cidade-principal.jpg -->
-          <img src="images/cidade-principal.jpg"
-               alt="Foto principal da minha cidade"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <div class="photo-placeholder" style="display:none;">
-            <strong>📷 Sua foto principal</strong><br>
-            Coloque uma foto em<br>
-            <b>images/cidade-principal.jpg</b>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="lugares">
+<div class="eyebrow">Explore a cidade</div>
+<h2>Pontos turísticos e lugares especiais</h2>
+<p>Esta área será preenchida com os lugares que você fotografar. Podemos colocar uma foto, o nome do lugar e um texto contando sua história.</p>
+<div class="gallery-grid">
+<div class="gallery-item"><span>Foto do ponto turístico 1<br>→ sua foto aqui</span></div>
+<div class="gallery-item"><span>Foto do ponto turístico 2<br>→ sua foto aqui</span></div>
+<div class="gallery-item"><span>Foto do ponto turístico 3<br>→ sua foto aqui</span></div>
+</div>
+</section>
 
-    <section id="sobre">
-      <div class="container about">
-        <div>
-          <h2 class="section-title">Sobre minha cidade</h2>
-          <p class="section-intro">
-            Aqui você pode escrever a história da sua cidade, falar sobre
-            sua cultura, lugares importantes e o que torna esse lugar especial.
-          </p>
-          <a class="button" href="#contato">Saiba mais →</a>
-        </div>
+<section class="gallery" id="galeria">
+<div class="eyebrow">Galeria</div>
+<h2>Major Isidoro em fotos</h2>
+<p>O fundo preto foi escolhido para fazer as cores das fotografias ganharem destaque.</p>
+<div class="gallery-grid">
+<div class="gallery-item"><img src="imagens/foto1.jpg" alt="Major Isidoro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span style="display:none">foto1.jpg</span></div>
+<div class="gallery-item"><img src="imagens/foto2.jpg" alt="Major Isidoro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span style="display:none">foto2.jpg</span></div>
+<div class="gallery-item"><img src="imagens/foto3.jpg" alt="Major Isidoro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span style="display:none">foto3.jpg</span></div>
+</div>
+</section>
 
-        <div class="facts">
-          <div class="fact">
-            <strong>📍 Localização</strong>
-            <span>Escreva aqui</span>
-          </div>
-          <div class="fact">
-            <strong>👥 Habitantes</strong>
-            <span>Escreva aqui</span>
-          </div>
-          <div class="fact">
-            <strong>📅 Fundação</strong>
-            <span>Escreva aqui</span>
-          </div>
-          <div class="fact">
-            <strong>⭐ Destaque</strong>
-            <span>Escreva aqui</span>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="contact" id="contato">
+<div class="eyebrow">Contato</div>
+<h2>Conhece uma história?</h2>
+<p>Este site está sendo criado como um projeto de aprendizado em programação e como uma forma de registrar histórias, lugares e memórias de Major Isidoro.</p>
+<a class="button" href="mailto:seuemail@example.com">Entrar em contato</a>
+</section>
+</main>
 
-    <section id="pontos">
-      <div class="container">
-        <h2 class="section-title">Pontos Turísticos</h2>
-        <p class="section-intro">
-          Substitua os nomes, textos e fotos abaixo pelos pontos turísticos
-          da sua cidade.
-        </p>
-
-        <div class="cards">
-          <article class="card">
-            <div class="card-photo">
-              <img src="images/ponto-1.jpg" alt="Ponto turístico 1"
-                   onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Foto 1';">
-            </div>
-            <div class="card-content">
-              <h3>Ponto Turístico 1</h3>
-              <p>Escreva uma descrição desse lugar.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-photo">
-              <img src="images/ponto-2.jpg" alt="Ponto turístico 2"
-                   onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Foto 2';">
-            </div>
-            <div class="card-content">
-              <h3>Ponto Turístico 2</h3>
-              <p>Escreva uma descrição desse lugar.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-photo">
-              <img src="images/ponto-3.jpg" alt="Ponto turístico 3"
-                   onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Foto 3';">
-            </div>
-            <div class="card-content">
-              <h3>Ponto Turístico 3</h3>
-              <p>Escreva uma descrição desse lugar.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-photo">
-              <img src="images/ponto-4.jpg" alt="Ponto turístico 4"
-                   onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Foto 4';">
-            </div>
-            <div class="card-content">
-              <h3>Ponto Turístico 4</h3>
-              <p>Escreva uma descrição desse lugar.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="galeria">
-      <div class="container">
-        <h2 class="section-title">Galeria</h2>
-        <p class="section-intro">
-          Coloque aqui suas melhores fotos. Você pode adicionar quantas quiser
-          copiando um bloco da galeria.
-        </p>
-
-        <div class="gallery">
-          <div class="gallery-item">
-            <img src="images/foto-1.jpg" alt="Foto da cidade"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Foto 1';">
-          </div>
-          <div class="gallery-item">
-            <img src="images/foto-2.jpg" alt="Foto da cidade"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Foto 2';">
-          </div>
-          <div class="gallery-item">
-            <img src="images/foto-3.jpg" alt="Foto da cidade"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Foto 3';">
-          </div>
-          <div class="gallery-item">
-            <img src="images/foto-4.jpg" alt="Foto da cidade"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Foto 4';">
-          </div>
-          <div class="gallery-item">
-            <img src="images/foto-5.jpg" alt="Foto da cidade"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Foto 5';">
-          </div>
-          <div class="gallery-item">
-            <img src="images/foto-6.jpg" alt="Foto da cidade"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='📷 Foto 6';">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contato" class="contact">
-      <div class="container">
-        <h2 class="section-title">Contato</h2>
-        <p>
-          Esta parte pode receber seus links de Instagram, WhatsApp,
-          GitHub ou outras redes.
-        </p>
-        <div class="buttons" style="justify-content:center;">
-          <a class="button primary" href="#">Instagram</a>
-          <a class="button" href="#">WhatsApp</a>
-          <a class="button" href="#">GitHub</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© 2026 Anderson Silva. Todos os direitos reservados.</span>
-      <span>Meu primeiro projeto web 🚀</span>
-    </div>
-  </footer>
+<footer>© 2026 AndersonSilva • Major Isidoro, Alagoas</footer>
 </body>
 </html>
