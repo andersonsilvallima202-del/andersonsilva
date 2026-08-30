@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Major Isidoro, Alagoas — história, cultura, lugares e fotos da cidade.">
+<title>Major Isidoro | Alagoas</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#050505;color:#fff;line-height:1.7}
+header{position:sticky;top:0;z-index:10;background:rgba(5,5,5,.96);border-bottom:1px solid #222;padding:18px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.35rem;font-weight:bold;letter-spacing:1px}
+nav a{color:#fff;text-decoration:none;margin-left:22px;font-size:.95rem}
+nav a:hover{opacity:.6}
+section{padding:90px 7%;max-width:1250px;margin:auto}
+.hero{min-height:88vh;display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.eyebrow{color:#aaa;text-transform:uppercase;letter-spacing:3px;font-size:.8rem;margin-bottom:12px}
+h1{font-size:clamp(3rem,8vw,6.5rem);line-height:.95;margin-bottom:25px}
+h2{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:18px}
+p{color:#d0d0d0;max-width:720px}
+.hero-text p{font-size:1.1rem;margin-bottom:28px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.button{display:inline-block;padding:13px 20px;border:1px solid #fff;border-radius:8px;color:#000;background:#fff;text-decoration:none;font-weight:bold}
+.button.dark{background:transparent;color:#fff}
+.photo-box{min-height:480px;border:1px solid #333;border-radius:18px;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center}
+.photo-box img{width:100%;height:100%;min-height:480px;object-fit:cover;display:block}
+.photo-placeholder{padding:35px;text-align:center;color:#888}
+.photo-placeholder strong{display:block;color:#fff;margin-bottom:8px}
+.history,.gallery{border-top:1px solid #222}
+.history-content{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+.facts{border-left:2px solid #fff;padding-left:25px}
+.fact{margin-bottom:25px}.fact strong{display:block;font-size:1.5rem}
+.gallery-grid{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gallery-item{aspect-ratio:4/3;background:#111;border:1px solid #292929;border-radius:12px;overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery-item span{display:flex;height:100%;align-items:center;justify-content:center;color:#777;padding:15px;text-align:center}
+.contact{border-top:1px solid #222;text-align:center}
+.contact p{margin:0 auto 25px}
+footer{border-top:1px solid #222;padding:30px 7%;text-align:center;color:#777;font-size:.9rem}
+@media(max-width:800px){
+header{flex-direction:column;gap:12px}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+nav a{margin-left:0}
+.hero,.history-content{grid-template-columns:1fr}
+.hero{min-height:auto;padding-top:60px}
+.photo-box,.photo-box img{min-height:320px}
+.gallery-grid{grid-template-columns:1fr}
+section{padding:65px 6%}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">AndersonSilva</div>
+<nav>
+<a href="#inicio">Início</a><a href="#historia">História</a><a href="#lugares">Lugares</a><a href="#galeria">Galeria</a><a href="#contato">Contato</a>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+<div class="hero-text">
+<div class="eyebrow">Alagoas • Sertão</div>
+<h1>Major<br>Isidoro</h1>
+<p>Um espaço para conhecer a história, a cultura, as paisagens e as histórias de quem faz parte de Major Isidoro, Alagoas.</p>
+<div class="buttons">
+<a class="button" href="#historia">Conheça a história</a>
+<a class="button dark" href="#galeria">Ver fotos</a>
+</div>
+</div>
+<div class="photo-box">
+<img src="imagens/foto-principal.jpg" alt="Foto de Major Isidoro" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+<div class="photo-placeholder" style="display:none"><strong>Sua foto principal</strong>Coloque uma foto na pasta <b>imagens</b> com o nome <b>foto-principal.jpg</b>.</div>
+</div>
+</section>
+
+<section class="history" id="historia">
+<div class="history-content">
+<div>
+<div class="eyebrow">Nossa história</div>
+<h2>De Sertãozinho a Major Isidoro</h2>
+<p>A história de Major Isidoro tem suas raízes no século XIX. Segundo o IBGE, em 1857 o fazendeiro Antônio Jerônimo da Rocha estabeleceu-se às margens do Riacho do Sertão e fundou a fazenda Sertãozinho.</p><br>
+<p>Entre seus filhos estava Izidoro, conhecido como Major Izidoro. Ele continuou ligado à terra e ficou conhecido por sua atuação em favor da região. Sua popularidade fez com que fosse chamado de patriarca do Sertãozinho.</p><br>
+<p>Em 1943, o distrito de Sertãozinho passou a se chamar Major Isidoro. Em 17 de setembro de 1949, pela Lei nº 1.473, foi criado oficialmente o município de Major Isidoro.</p>
+</div>
+<div class="facts">
+<div class="fact"><strong>1857</strong><span>Início da história registrada da localidade de Sertãozinho.</span></div>
+<div class="fact"><strong>1943</strong><span>Sertãozinho passa a denominar-se Major Isidoro.</span></div>
+<div class="fact"><strong>17/09/1949</strong><span>Criação oficial do município.</span></div>
+<div class="fact"><strong>Izidorense</strong><span>Gentílico de quem nasce em Major Isidoro.</span></div>
+</div>
+</div>
+</section>
+
+<section id="lugares">
+<div class="eyebrow">Explore a cidade</div>
+<h2>Pontos turísticos e lugares especiais</h2>
+<p>Esta área será preenchida com os lugares que você fotografar. Podemos colocar uma foto, o nome do lugar e um texto contando sua história.</p>
+<div class="gallery-grid">
+<div class="gallery-item"><span>Foto do ponto turístico 1<br>→ sua foto aqui</span></div>
+<div class="gallery-item"><span>Foto do ponto turístico 2<br>→ sua foto aqui</span></div>
+<div class="gallery-item"><span>Foto do ponto turístico 3<br>→ sua foto aqui</span></div>
+</div>
+</section>
+
+<section class="gallery" id="galeria">
+<div class="eyebrow">Galeria</div>
+<h2>Major Isidoro em fotos</h2>
+<p>O fundo preto foi escolhido para fazer as cores das fotografias ganharem destaque.</p>
+<div class="gallery-grid">
+<div class="gallery-item"><img src="imagens/foto1.jpg" alt="Major Isidoro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span style="display:none">foto1.jpg</span></div>
+<div class="gallery-item"><img src="imagens/foto2.jpg" alt="Major Isidoro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span style="display:none">foto2.jpg</span></div>
+<div class="gallery-item"><img src="imagens/foto3.jpg" alt="Major Isidoro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span style="display:none">foto3.jpg</span></div>
+</div>
+</section>
+
+<section class="contact" id="contato">
+<div class="eyebrow">Contato</div>
+<h2>Conhece uma história?</h2>
+<p>Este site está sendo criado como um projeto de aprendizado em programação e como uma forma de registrar histórias, lugares e memórias de Major Isidoro.</p>
+<a class="button" href="mailto:seuemail@example.com">Entrar em contato</a>
+</section>
+</main>
+
+<footer>© 2026 AndersonSilva • Major Isidoro, Alagoas</footer>
+</body>
+</html>
